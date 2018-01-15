@@ -274,6 +274,10 @@
 		29F1C85F200369BA003780D8 /* HelpUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1C85E200369BA003780D8 /* HelpUsViewModel.swift */; };
 		29F1C863200375D2003780D8 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1C862200375D2003780D8 /* Wallet.swift */; };
 		29F1C865200384FE003780D8 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1C864200384FE003780D8 /* Wallet.swift */; };
+		29F1C86920042EAC003780D8 /* WordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1C86720042EAC003780D8 /* WordCollectionViewCell.swift */; };
+		29F1C86A20042EAC003780D8 /* WordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29F1C86820042EAC003780D8 /* WordCollectionViewCell.xib */; };
+		29F1C86C20043C61003780D8 /* PassphraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1C86B20043C61003780D8 /* PassphraseViewModel.swift */; };
+		29F1C86E20043F1E003780D8 /* PassphraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1C86D20043F1E003780D8 /* PassphraseView.swift */; };
 		29FC0CB61F8298820036089F /* TransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC0CB51F8298820036089F /* TransactionCoordinator.swift */; };
 		29FC0CB81F8299510036089F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC0CB71F8299510036089F /* Coordinator.swift */; };
 		29FC9BC61F830899000209CD /* MirgrationInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC9BC51F830880000209CD /* MirgrationInitializer.swift */; };
@@ -606,6 +610,10 @@
 		29F1C85E200369BA003780D8 /* HelpUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpUsViewModel.swift; sourceTree = "<group>"; };
 		29F1C862200375D2003780D8 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		29F1C864200384FE003780D8 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		29F1C86720042EAC003780D8 /* WordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordCollectionViewCell.swift; path = Trust/Wallet/Views/WordCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		29F1C86820042EAC003780D8 /* WordCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WordCollectionViewCell.xib; path = Trust/Wallet/Views/WordCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		29F1C86B20043C61003780D8 /* PassphraseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseViewModel.swift; sourceTree = "<group>"; };
+		29F1C86D20043F1E003780D8 /* PassphraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseView.swift; sourceTree = "<group>"; };
 		29FC0CB51F8298820036089F /* TransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCoordinator.swift; sourceTree = "<group>"; };
 		29FC0CB71F8299510036089F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		29FC9BC51F830880000209CD /* MirgrationInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirgrationInitializer.swift; sourceTree = "<group>"; };
@@ -790,6 +798,7 @@
 		2912CD281F6A831700C6CBE3 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				29F1C86620042E88003780D8 /* Views */,
 				293248881F88D586008A9818 /* Types */,
 				2977CAEF1F7E0C14009682A0 /* ViewModels */,
 				2977CAEE1F7E0C0D009682A0 /* ViewControllers */,
@@ -1249,6 +1258,7 @@
 			children = (
 				29A13E2B1F6A955700E432A2 /* CreateWalletViewModel.swift */,
 				2996F1421F6C96FF005C33AE /* ImportWalletViewModel.swift */,
+				29F1C86B20043C61003780D8 /* PassphraseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1699,6 +1709,17 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		29F1C86620042E88003780D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				29F1C86720042EAC003780D8 /* WordCollectionViewCell.swift */,
+				29F1C86820042EAC003780D8 /* WordCollectionViewCell.xib */,
+				29F1C86D20043F1E003780D8 /* PassphraseView.swift */,
+			);
+			name = Views;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		29FC9BC31F830880000209CD /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -2035,6 +2056,7 @@
 			files = (
 				613D04891FDE15F8008DE72E /* COMODO ECC Domain Validation Secure Server CA 2.cer in Resources */,
 				771AA94B1FF76B8000D25403 /* demo.html in Resources */,
+				29F1C86A20042EAC003780D8 /* WordCollectionViewCell.xib in Resources */,
 				291794FC1F95DE5F00539A30 /* index.html in Resources */,
 				296106CE1F777E410006164B /* LaunchScreen.storyboard in Resources */,
 				778EAF831FF379AA00C8E2AB /* web3.min.js in Resources */,
@@ -2325,6 +2347,7 @@
 				293112171FC5555500966EEA /* ExchangeTokensViewModel.swift in Sources */,
 				295A59381F71C1B90092F0FC /* AccountsCoordinator.swift in Sources */,
 				299B5E2D1FCBC0660051361C /* BalanceProtocol.swift in Sources */,
+				29F1C86E20043F1E003780D8 /* PassphraseView.swift in Sources */,
 				296421971F70C1F200EB363B /* ErrorView.swift in Sources */,
 				29358DA91F79FD1C00925D61 /* CALayer.swift in Sources */,
 				29C80D491FB51C380037B1E0 /* Dictionary.swift in Sources */,
@@ -2359,6 +2382,7 @@
 				29F114EC1FA448F400114A29 /* TokensCoordinator.swift in Sources */,
 				2932488E1F88E69F008A9818 /* OnePasswordError.swift in Sources */,
 				29F1C85820036926003780D8 /* AppTracker.swift in Sources */,
+				29F1C86C20043C61003780D8 /* PassphraseViewModel.swift in Sources */,
 				293E62711FA2F63500CB0A66 /* InitialWalletCreationCoordinator.swift in Sources */,
 				291D73C61F7F500D00A8AB56 /* TransactionItemState.swift in Sources */,
 				29BE3FD21F707DC300F6BFC2 /* TransactionDataCoordinator.swift in Sources */,
@@ -2387,6 +2411,7 @@
 				296421951F70C1EC00EB363B /* LoadingView.swift in Sources */,
 				2961BD071FB146EB00C4B840 /* ChainState.swift in Sources */,
 				29285B421F6FB3E60044CF29 /* SendViewController.swift in Sources */,
+				29F1C86920042EAC003780D8 /* WordCollectionViewCell.swift in Sources */,
 				2996F14D1F6CA743005C33AE /* UIViewController.swift in Sources */,
 				2959961F1FAE759700DB66A8 /* RawTransaction.swift in Sources */,
 				2963B6BB1F9A899A003063C1 /* CoinTickerID.swift in Sources */,
