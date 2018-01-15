@@ -44,7 +44,7 @@ class AppCoordinator: NSObject, Coordinator {
         applyStyle()
         resetToWelcomeScreen()
 
-        if keystore.hasWallets {
+        if false { //keystore.hasWallets {
             showTransactions(for: keystore.recentlyUsedWallet ?? keystore.wallets.first!)
         } else {
             resetToWelcomeScreen()
@@ -80,8 +80,9 @@ class AppCoordinator: NSObject, Coordinator {
     }
 
     func resetToWelcomeScreen() {
+        let controller = PassphraseViewController()
         navigationController.setNavigationBarHidden(true, animated: false)
-        navigationController.viewControllers = [welcomeViewController]
+        navigationController.viewControllers = [controller]
     }
 
     @objc func reset() {
