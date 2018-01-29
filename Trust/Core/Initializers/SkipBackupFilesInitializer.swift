@@ -5,7 +5,7 @@ import Foundation
 struct SkipBackupFilesInitializer: Initializer {
 
     func perform() {
-        let directories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true)
+        let directories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
 
         directories.forEach { addSkipBackupAttributeToItemAtURL(filePath: $0) }
     }
