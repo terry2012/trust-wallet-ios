@@ -32,7 +32,6 @@ class BrowserCoordinator: Coordinator {
         self.navigationController = UINavigationController(navigationBarClass: BrowserNavigationBar.self, toolbarClass: nil)
         self.session = session
         self.keystore = keystore
-        self.register(with: navigator)
     }
 
     func start() {
