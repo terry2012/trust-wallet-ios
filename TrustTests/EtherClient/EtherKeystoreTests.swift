@@ -291,14 +291,14 @@ class EtherKeystoreTests: XCTestCase {
             return XCTFail()
         }
 
-        let typedData = EthTypedData(type: "uint", name: "Auth token", value: "1498316044249108")
+        let typedData = EthTypedData(type: "string", name: "Auth token", value: "1498316044249108")
 
         let signResult = keystore.signTypedMessage([typedData], for: account)
         guard case let .success(data) = signResult else {
             return XCTFail()
         }
-
-        let expected = Data(hexString: "0xa1f639ae9e97401030fb4205749fe8b8e72602624aa92aa0558129b345e9546c42f3bcb7b71c83b7474cb93d83913249708570af9120cf9655775fea9571e0481b")
+        print("signResult ", data.hex)
+        let expected = Data(hexString: "0xdaaa29f33b5d09334c0ab61167334c6fc356dda64f824b8bee9cb80b2f10a7040f349e20d562e5dafa5ae36a086e7ac25bf85b353db0c8dc663ea87af5f51ff51b")
         XCTAssertEqual(expected, data)
     }
 
