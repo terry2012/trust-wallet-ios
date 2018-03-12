@@ -11,6 +11,28 @@ enum EtherKeystoreError: LocalizedError {
     case protectionDisabled
 }
 
+struct EthTypedData: Codable {
+    //for signTypedMessage
+    enum EthTypedDataError: LocalizedError {
+        case dataConversionFailed
+    }
+
+    let type: String
+    let name: String
+    let value: String
+
+    var schema: String {
+        return "string\(type) \(name)"
+    }
+
+    func data() throws -> Data {
+        guard let data = (self.name + self.value).data(using: .utf8) else {
+            throw EthTypedDataError.dataConversionFailed
+        }
+        return data
+    }
+}
+
 open class EtherKeystore: Keystore {
     struct Keys {
         static let recentlyUsedAddress: String = "recentlyUsedAddress"
@@ -311,16 +333,19 @@ open class EtherKeystore: Keystore {
         return signHash(message.sha3(.keccak256), for: account)
     }
 
-    func signTypedMessage(_ datas: [Data], for account: Account) -> Result<Data, KeystoreError> {
+    func signTypedMessage(_ datas: [EthTypedData], for account: Account) -> Result<Data, KeystoreError> {
         guard let password = getPassword(for: account) else {
             return .failure(KeystoreError.failedToSignMessage)
         }
         do {
-            let datas = try keyStore.signHashes(datas, account: account, password: password)
-            let data = Data()
-            return signHash(datas.reduce(data, { $0 + $1 }), for: account)
+            //FIXME implement the algorithm here: https://github.com/MetaMask/eth-sig-util/blob/master/index.js#L77
+            let array = try datas.map { try $0.data() }
+            let hashes = array.map { $0.sha3(.keccak256) }
+            let signed = try keyStore.signHashes(hashes, account: account, password: password)
+            let final = Data(bytes: [UInt8].init(repeating: 0x0, count: 32))
+            return signHash(signed.reversed().reduce(final, { ($0 + $1).sha3(.keccak256) }), for: account)
         } catch {
-            return .failure(KeystoreError.failedToSignMessage)
+            return .failure(KeystoreError.failedToSignTypedMessage)
         }
     }
 

@@ -273,6 +273,35 @@ class EtherKeystoreTests: XCTestCase {
         XCTAssertEqual(expected, data)
     }
 
+    func testSignTypedMessage() {
+        let keystore = FakeEtherKeystore()
+        let privateKeyResult = keystore.convertPrivateKeyToKeystoreFile(privateKey: "0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318", passphrase: TestKeyStore.password)
+
+        guard case let .success(keystoreString) = privateKeyResult else {
+            return XCTFail()
+        }
+
+        let result = keystore.importKeystore(
+            value: keystoreString.jsonString!,
+            password: TestKeyStore.password,
+            newPassword: TestKeyStore.password
+        )
+
+        guard case let .success(account) = result else {
+            return XCTFail()
+        }
+
+        let typedData = EthTypedData(type: "uint", name: "Auth token", value: "1498316044249108")
+
+        let signResult = keystore.signTypedMessage([typedData], for: account)
+        guard case let .success(data) = signResult else {
+            return XCTFail()
+        }
+
+        let expected = Data(hexString: "0xa1f639ae9e97401030fb4205749fe8b8e72602624aa92aa0558129b345e9546c42f3bcb7b71c83b7474cb93d83913249708570af9120cf9655775fea9571e0481b")
+        XCTAssertEqual(expected, data)
+    }
+
     func testAddWatchAddress() {
         let keystore = FakeEtherKeystore()
         let address: Address = .make()
@@ -339,6 +368,4 @@ class EtherKeystoreTests: XCTestCase {
 
         XCTAssertEqual(key, "hd-wallet-" + address.description)
     }
-
-
 }

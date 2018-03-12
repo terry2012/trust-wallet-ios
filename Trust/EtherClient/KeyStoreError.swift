@@ -14,6 +14,7 @@ enum KeystoreError: LocalizedError {
     case failedToParseJSON
     case accountNotFound
     case failedToSignMessage
+    case failedToSignTypedMessage
     case failedToExportPrivateKey
 
     var errorDescription: String? {
@@ -42,6 +43,8 @@ enum KeystoreError: LocalizedError {
             return "Failed to sign message"
         case .failedToExportPrivateKey:
             return "Failed to export private key"
+        case .failedToSignTypedMessage:
+            return "Failed to sign typed message"
         }
     }
 }
